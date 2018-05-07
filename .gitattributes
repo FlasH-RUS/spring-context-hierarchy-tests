@@ -1,0 +1,9 @@
+# set default behaviour, in case users don't have core.autocrlf set.
+text=auto
+
+# Gradle Wrapper files must always have correct line endings
+gradlew.bat text eol=crlf
+gradlew     text eol=lf
+
+# Shell scripts with Unix file endings
+*.sh text eol=lf

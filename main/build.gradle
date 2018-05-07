@@ -1,0 +1,10 @@
+apply plugin: 'org.springframework.boot'
+
+dependencies {
+    compile project(':common')
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile('org.json:json:20180130')
+}
+
+eclipse.project.name = 'spring-context-hierarchy-sandbox-main'
