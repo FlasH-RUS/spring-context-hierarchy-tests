@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -26,13 +27,21 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 // @DirtiesContext
 @ContextHierarchy({
         @ContextConfiguration(classes = CommonConfiguration.class),
-        @ContextConfiguration(classes = MainApplication.class) })
+        @ContextConfiguration(classes = { MainApplication.class, AppControllerIntegrationTest.MockConfiguration.class }) })
 public class AppControllerIntegrationTest {
+
+    @Configuration
+    static class MockConfiguration {
+
+        @MockBean
+        private DiceRollService diceRollService;
+    }
 
     @Autowired
     private WebApplicationContext context;
 
-    @MockBean
+    // @MockBean
+    @Autowired
     private DiceRollService diceRollService;
 
     private MockMvc mvc;

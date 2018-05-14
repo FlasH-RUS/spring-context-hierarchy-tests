@@ -12,6 +12,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.ContextHierarchy;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -29,10 +30,18 @@ import static org.mockito.Mockito.when;
 // @DirtiesContext
 @ContextHierarchy({
         @ContextConfiguration(classes = CommonConfiguration.class),
-        @ContextConfiguration(classes = MainApplication.class) })
+        @ContextConfiguration(classes = { MainApplication.class, DiceRollServiceIntegrationTest.MockConfiguration.class }) })
 public class DiceRollServiceIntegrationTest {
 
-    @MockBean
+    @Configuration
+    static class MockConfiguration {
+
+        @MockBean
+        private RandomService randomService;
+    }
+
+    // @MockBean
+    @Autowired
     private RandomService randomService;
 
     @Autowired
