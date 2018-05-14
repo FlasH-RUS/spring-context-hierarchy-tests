@@ -2,7 +2,7 @@ package com.example.contexthierarchy.domain;
 
 import javax.persistence.EntityManager;
 
-import com.example.contexthierarchy.CommonTestConfiguration;
+import com.example.contexthierarchy.CommonConfiguration;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,7 +18,7 @@ import static org.hamcrest.Matchers.notNullValue;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
-@ContextConfiguration(classes = CommonTestConfiguration.class)
+@ContextConfiguration(classes = CommonConfiguration.class)
 public class EntityRepositoryIntegrationTest {
 
     @Autowired
